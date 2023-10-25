@@ -80,6 +80,7 @@ function App() {
             address: "Address " + randomNumber,
         }
         setDataSource(pre => {
+            // two arguments so square brackets (may be)
             return [...pre, newStudent]
         })
     }
@@ -98,6 +99,7 @@ function App() {
 
     const onEditStudent = (record) => {
         setIsEditing(true);
+        //Spread operator in one arguement so flower braces(may be)
         setEditingStudent({ ...record });
     }
 
@@ -138,8 +140,14 @@ function App() {
                     // setIsEditing(false);
                 }}
             >
+                {/* # If the ternary operator here is not used error is thown saying can't read name property of null 
+                # But is the property was null the value woudn't have been printing so why when ternary operator not used that error is shown
+                # The operator is used for safety purpose (in case, cases) but in this case it is absolutelty required as if it is changing the value  from null to a non-null value 
+                Why? or How?*/}
                 <Input value={editingStudent?.name} onChange={(e) => {
                     setEditingStudent(pre => {
+                        //here two arguements with the spread operator but then also flower braces is used but not the square braces 
+                        //Why? 
                         return ({ ...pre, name: e.target.value });
                     })
                 }}
